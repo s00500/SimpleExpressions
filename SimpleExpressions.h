@@ -1,5 +1,5 @@
-#ifndef SimpleMouth_h
-#define SimpleMouth_h
+#ifndef SimpleExpressions_h
+#define SimpleExpressions_h
 #include <Adafruit_NeoPixel.h>
 #ifdef __AVR__
   #include <avr/power.h>
@@ -9,12 +9,13 @@
 
 
 
-class SimpleExpressions
+class SimpleExpressionsClass
 {
   public:
 
     void init(int mouthPin, int buzzerPin);
 
+    void writeMouth();
     void putMouth(unsigned long int mouth, bool predefined = true);
     void putAnimationMouth(unsigned long int anim, int index);
     void clearMouth();
@@ -39,5 +40,7 @@ class SimpleExpressions
     void _execute(int A[4], int O[4], int T, double phase_diff[4], float steps);
 
 };
+
+extern SimpleExpressionsClass SimpleExpressions;
 
 #endif
