@@ -15,7 +15,7 @@ class SimpleExpressionsClass
 
     void init(int mouthPin, int buzzerPin);
 
-    void writeMouth();
+    void writeMouth(int mouth);
     void putMouth(unsigned long int mouth, bool predefined = true);
     void putAnimationMouth(unsigned long int anim, int index);
     void clearMouth();
