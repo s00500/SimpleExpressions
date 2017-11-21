@@ -7,8 +7,6 @@
 
 #include "Shapes.h"
 
-
-
 class SimpleExpressionsClass
 {
   public:
@@ -16,9 +14,12 @@ class SimpleExpressionsClass
     void init(int mouthPin, int buzzerPin);
 
     void writeMouth(int mouth);
-    void putMouth(unsigned long int mouth, bool predefined = true);
-    void putAnimationMouth(unsigned long int anim, int index);
     void clearMouth();
+
+    void writeMouthRecolored(int mouth, u_int32 color);
+    void writeMouthGeneric(int[7][3] mouthArray);
+
+    void putAnimationMouth(unsigned long int anim, int index);
 
     //-- Sounds
     void _tone (float noteFrequency, long noteDuration, int silentDuration);
@@ -33,12 +34,9 @@ class SimpleExpressionsClass
     Adafruit_NeoPixel mouth;
 
     int pinBuzzer;
-    int pinMouth;
 
     unsigned long int getMouthShape(int number);
     unsigned long int getAnimShape(int anim, int index);
-    void _execute(int A[4], int O[4], int T, double phase_diff[4], float steps);
-
 };
 
 extern SimpleExpressionsClass SimpleExpressions;
