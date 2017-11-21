@@ -1,28 +1,18 @@
 #include "Arduino.h"
 #include "SimpleExpressions.h"
 
-
-
 void SimpleExpressionsClass::init(int mouthPin, int buzzerPin) {
   mouth = Adafruit_NeoPixel(7, mouthPin, NEO_GRB + NEO_KHZ800);
   pinBuzzer = buzzerPin;
-
+  pinMode(buzzerPin, OUTPUT);
   mouth.begin();
   mouth.show();
+
 }
 
 ///////////////////////////////////////////////////////////////////
-//-- MOUTHS & ANIMATIONS ----------------------------------------//
+//-- MOUTHS  ----------------------------------------//
 ///////////////////////////////////////////////////////////////////
-
-unsigned long int SimpleExpressionsClass::getMouthShape(int number){
-  unsigned long int types []={zero_code,one_code,two_code,three_code,four_code,five_code,six_code,seven_code,eight_code,
-  nine_code,smile_code,happyOpen_code,happyClosed_code,heart_code,bigSurprise_code,smallSurprise_code,tongueOut_code,
-  vamp1_code,vamp2_code,lineMouth_code,confused_code,diagonal_code,sad_code,sadOpen_code,sadClosed_code,
-  okMouth_code, xMouth_code,interrogation_code,thunder_code,culito_code,angry_code};
-
-  return types[number];
-}
 
 
 unsigned long int SimpleExpressionsClass::getAnimShape(int anim, int index){
@@ -32,24 +22,20 @@ unsigned long int SimpleExpressionsClass::getAnimShape(int anim, int index){
 
 void SimpleExpressionsClass::putAnimationMouth(unsigned long int aniMouth, int index){
 
-      //ledmatrix.writeFull(getAnimShape(aniMouth,index));
 }
 
-void SimpleExpressionsClass::writeMouth(){
+void SimpleExpressionsClass::writeMouth(unsigned int mouthId){
+   if(mouthId > sizeof(shapes)/sizeof(Frame*)) {
+     if(debug) Serial.println('mouth does not exist');
+   }
+  writeMouthGeneric(shapes[mouthId].data);
+}
+
+void SimpleExpressionsClass::writeMouthGeneric(const unsigned int mouthArray[7][3]) {
   for(uint16_t i=0; i<7; i++) {
-    mouth.setPixelColor(i, mouth.Color(happySimple[i][0], happySimple[i][1], happySimple[i][2]));
+    mouth.setPixelColor(i, mouth.Color(mouthArray[i][0], mouthArray[i][1], mouthArray[i][2]));
   }
   mouth.show();
-}
-
-void SimpleExpressionsClass::putMouth(unsigned long int mouth, bool predefined){
-
-  if (predefined){
-    //ledmatrix.writeFull(getMouthShape(mouth));
-  }
-  else{
-    //ledmatrix.writeFull(mouth);
-  }
 }
 
 
@@ -63,11 +49,43 @@ void SimpleExpressionsClass::clearMouth(){
 ///////////////////////////////////////////////////////////////////
 //-- SOUNDS -----------------------------------------------------//
 ///////////////////////////////////////////////////////////////////
-/*
+
 void SimpleExpressionsClass::_tone (float noteFrequency, long noteDuration, int silentDuration){
 
     // tone(10,261,500);
     // delay(500);
+    //
+    // #define anaPin 32
+/*
+#define digiPin 33
+#define beepPin 35
+
+int freq = 2000;
+int channel = 0;
+int resolution = 8;
+
+void setup() {
+pinMode(digiPin, INPUT_PULLUP);
+Serial.begin(115200);
+
+  ledcSetup(channel, freq, resolution);
+  ledcAttachPin(12, channel);
+    ledcWriteTone(channel, 440);
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+Serial.print("AnalogValue: ");
+Serial.print(analogRead(anaPin));
+Serial.print(" DigitalValue: ");
+Serial.println(digitalRead(digiPin));
+if(!digitalRead(digiPin))ledcWrite(channel, 255);
+else ledcWrite(channel, 0);
+
+
+delay(50);
+
+}
+
 
       if(silentDuration==0){silentDuration=1;}
 
@@ -75,8 +93,9 @@ void SimpleExpressionsClass::_tone (float noteFrequency, long noteDuration, int 
       delay(noteDuration);       //milliseconds to microseconds
       //noTone(PIN_Buzzer);
       delay(silentDuration);
+      */
 }
-
+/*
 
 void SimpleE::bendTones (float initFrequency, float finalFrequency, float prop, long noteDuration, int silentDuration){
 

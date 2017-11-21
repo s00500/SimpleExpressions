@@ -7,17 +7,20 @@
 
 #include "Shapes.h"
 
+#define debug true
+
+
 class SimpleExpressionsClass
 {
   public:
 
     void init(int mouthPin, int buzzerPin);
 
-    void writeMouth(int mouth);
+    void writeMouth(unsigned int mouth);
     void clearMouth();
 
-    void writeMouthRecolored(int mouth, u_int32 color);
-    void writeMouthGeneric(int[7][3] mouthArray);
+    void writeMouthRecolored(int mouth, uint32_t color);
+    void writeMouthGeneric(const unsigned int mouthArray[7][3]);
 
     void putAnimationMouth(unsigned long int anim, int index);
 

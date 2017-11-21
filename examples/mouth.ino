@@ -2,7 +2,7 @@
 
 void setup() {
   SimpleExpressions.init(13, 14);
-  SimpleExpressions.writeMouth();
+  SimpleExpressions.writeMouth(1);
 
 }
 
