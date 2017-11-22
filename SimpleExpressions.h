@@ -16,13 +16,15 @@ class SimpleExpressionsClass
 
     void init(int mouthPin, int buzzerPin);
 
-    void writeMouth(unsigned int mouth);
+    void writeMouth(char mouthName[]);
+    void printMouthShape(int number);
+
     void clearMouth();
 
     void writeMouthRecolored(int mouth, uint32_t color);
-    void writeMouthGeneric(const unsigned int mouthArray[7][3]);
+    void writeMouthGeneric(const int mouthArray[7][3]);
 
-    void putAnimationMouth(unsigned long int anim, int index);
+    void putAnimationMouth(int anim, int index);
 
     //-- Sounds
     void _tone (float noteFrequency, long noteDuration, int silentDuration);
@@ -38,8 +40,8 @@ class SimpleExpressionsClass
 
     int pinBuzzer;
 
-    unsigned long int getMouthShape(int number);
-    unsigned long int getAnimShape(int anim, int index);
+    long int getMouthShape(int number);
+    long int getAnimShape(int anim, int index);
 };
 
 extern SimpleExpressionsClass SimpleExpressions;

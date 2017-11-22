@@ -3,8 +3,8 @@
 
 struct Frame
 {
-    String name;
-    unsigned int data[7][3];
+    char name[20];
+    int data[7][3];
 }
 typedef Frame;
 
@@ -12,7 +12,9 @@ typedef Frame;
 //*********************************MOUTHS DEFINES************************************
 //***********************************************************************************
 
-const Frame shapes[] = {
+#define shapeNumber 5 // add the current shape count here
+// and don't make names longer than 20!
+const PROGMEM Frame shapes[] = {
   {
     "zeros",
     {
@@ -26,7 +28,19 @@ const Frame shapes[] = {
     }
   },
   {
-    "happySimple",
+    "happySmall",
+    {
+      {0,0,0},
+      {0,0,0},
+      {0,150,0},
+      {0,150,0},
+      {0,0,0},
+      {0,0,0},
+      {0,0,0},
+    }
+  },
+  {
+    "happyFull",
     {
       {0,0,0},
       {0,150,0},
@@ -36,7 +50,30 @@ const Frame shapes[] = {
       {0,0,0},
       {0,0,0},
     }
-  }
+  },
+  {
+    "sadSmall",
+    {
+      {0, 0, 0},
+      {0, 0, 0},
+      {0, 0, 0},
+      {0, 0, 0},
+      {0, 0, 0},
+      {0, 150,0},
+      {0, 150,0},
+    }
+  },
+  {
+    "sadFull",
+    {
+      {0,0,0},
+      {0,150,0},
+      {0,0,0},
+      {0,0,0},
+      {0,150,0},
+      {0,150,0},
+      {0,150,0},
+    }
+  },
 };
-
 #endif
