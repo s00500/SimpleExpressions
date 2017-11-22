@@ -3,11 +3,17 @@
 
 void SimpleExpressionsClass::init(int mouthPin, int buzzerPin) {
   mouth = Adafruit_NeoPixel(7, mouthPin, NEO_GRB + NEO_KHZ800);
-  pinBuzzer = buzzerPin;
-  pinMode(buzzerPin, OUTPUT);
   mouth.begin();
   mouth.show();
 
+  pinBuzzer = buzzerPin;
+  pinMode(buzzerPin, OUTPUT);
+
+  int freq = 2000;
+  int channel = 1;
+  int resolution = 8;
+  ledcSetup(1, freq, resolution);
+  ledcAttachPin(buzzerPin, 1);
 }
 
 ///////////////////////////////////////////////////////////////////
@@ -86,50 +92,15 @@ void SimpleExpressionsClass::clearMouth(){
 //-- SOUNDS -----------------------------------------------------//
 ///////////////////////////////////////////////////////////////////
 
+
 void SimpleExpressionsClass::_tone (float noteFrequency, long noteDuration, int silentDuration){
+    if(silentDuration==0){silentDuration=1;}
 
-    // tone(10,261,500);
-    // delay(500);
-    //
-    // #define anaPin 32
-/*
-#define digiPin 33
-#define beepPin 35
-
-int freq = 2000;
-int channel = 0;
-int resolution = 8;
-
-void setup() {
-pinMode(digiPin, INPUT_PULLUP);
-Serial.begin(115200);
-
-  ledcSetup(channel, freq, resolution);
-  ledcAttachPin(12, channel);
-    ledcWriteTone(channel, 440);
-}
-void loop() {
-  // put your main code here, to run repeatedly:
-Serial.print("AnalogValue: ");
-Serial.print(analogRead(anaPin));
-Serial.print(" DigitalValue: ");
-Serial.println(digitalRead(digiPin));
-if(!digitalRead(digiPin))ledcWrite(channel, 255);
-else ledcWrite(channel, 0);
-
-
-delay(50);
-
-}
-
-
-      if(silentDuration==0){silentDuration=1;}
-
-      tone(SimpleExpressionsClass::pinBuzzer, noteFrequency, noteDuration);
-      delay(noteDuration);       //milliseconds to microseconds
-      //noTone(PIN_Buzzer);
-      delay(silentDuration);
-      */
+    ledcWriteTone(0, noteFrequency);
+    ledcWrite(1, 255);
+    delay(noteDuration);       //milliseconds to microseconds
+    //ledcWrite(0, 0); // notone
+    delay(silentDuration);
 }
 /*
 
