@@ -14,7 +14,7 @@ typedef Frame;
 
 #define shapeNumber 5 // add the current shape count here
 // and don't make names longer than 20!
-const PROGMEM Frame shapes[] = {
+const Frame shapes[] = {
   {
     "zeros",
     {
@@ -24,7 +24,7 @@ const PROGMEM Frame shapes[] = {
        {0,0,0},
        {0,0,0},
        {0,0,0},
-       {0,0,0},
+       {0,0,0}
     }
   },
   {
@@ -36,7 +36,7 @@ const PROGMEM Frame shapes[] = {
       {0,150,0},
       {0,0,0},
       {0,0,0},
-      {0,0,0},
+      {0,0,0}
     }
   },
   {
@@ -48,7 +48,7 @@ const PROGMEM Frame shapes[] = {
       {0,150,0},
       {0,150,0},
       {0,0,0},
-      {0,0,0},
+      {0,0,0}
     }
   },
   {
@@ -60,7 +60,7 @@ const PROGMEM Frame shapes[] = {
       {0, 0, 0},
       {0, 0, 0},
       {0, 150,0},
-      {0, 150,0},
+      {0, 150,0}
     }
   },
   {
@@ -72,8 +72,8 @@ const PROGMEM Frame shapes[] = {
       {0,0,0},
       {0,150,0},
       {0,150,0},
-      {0,150,0},
+      {0,150,0}
     }
-  },
+  }
 };
 #endif

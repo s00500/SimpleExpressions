@@ -36,9 +36,8 @@ class SimpleExpressionsClass
 
 
   private:
-    Adafruit_NeoPixel mouth;
-
     int pinBuzzer;
+    Adafruit_NeoPixel mouth;
 
     long int getMouthShape(int number);
     long int getAnimShape(int anim, int index);
