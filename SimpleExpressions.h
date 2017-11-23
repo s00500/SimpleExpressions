@@ -6,6 +6,7 @@
 #endif
 
 #include "Shapes.h"
+#include "Sounds.h"
 
 #define debug true
 
@@ -16,34 +17,32 @@ class SimpleExpressionsClass
 
     void init(int mouthPin, int buzzerPin);
 
-    void writeMouth(char mouthName[], int r, int g, int b);
     void printMouth(int number, int r, int g, int b);
+    void writeMouth(char mouthName[], int r, int g, int b);
 
-    void writeMouth(char mouthName[]);
     void printMouth(int number);
+    void writeMouth(char mouthName[]);
 
     void clearMouth();
 
-    void writeMouthGeneric(const bool mouthArray[7], int r, int g, int b);
     void writeMouthGeneric(const int mouthArray[7][3]);
+    void writeMouthGeneric(const bool mouthArray[7], int r, int g, int b);
+
 
     //void putAnimationMouth(int anim, int index);
 
     //-- Sounds
     void _tone (float noteFrequency, long noteDuration, int silentDuration);
     void bendTones (float initFrequency, float finalFrequency, float prop, long noteDuration, int silentDuration);
-    void sing(int songName);
+    void playSound(int soundName);
 
     //-- Gestures
     //void playGesture(int gesture);
 
 
   private:
-    int pinBuzzer;
     Adafruit_NeoPixel mouth;
-
-    long int getMouthShape(int number);
-    long int getAnimShape(int anim, int index);
+    void clearPixels();
 };
 
 extern SimpleExpressionsClass SimpleExpressions;
