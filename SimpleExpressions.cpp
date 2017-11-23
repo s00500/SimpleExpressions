@@ -20,63 +20,71 @@ void SimpleExpressionsClass::init(int mouthPin, int buzzerPin) {
 //-- MOUTHS  ----------------------------------------//
 ///////////////////////////////////////////////////////////////////
 
-
-long int SimpleExpressionsClass::getAnimShape(int anim, int index){
-
-}
-
-
+/*
 void SimpleExpressionsClass::putAnimationMouth(int aniMouth, int index){
 
-}
-
-/*
-void SimpleExpressionsClass::writeMouth(unsigned int mouthId){
-   if(mouthId > shapeNumber) {
-     if(debug) Serial.println("Error: mouth does not exist");
-     return;
-   }
-  writeMouthGeneric(shapes[mouthId].data);
 }
 */
 
 
-void SimpleExpressionsClass::writeMouth(char mouthName[] ){
+void SimpleExpressionsClass::writeMouth(char mouthName[], int r, int g, int b){
   int number = -1;
-    for(int i = 0; i < shapeNumber; i++){
-      // perform on first encounter
-      //Serial.print("aname: ");
+    for(int i = 0; i < frameCount; i++){
       if(strncmp(shapes[i].name, mouthName, 20) == 0) {
-        //Serial.print("####################match ");
-        //Serial.println(shapes[i].name);
         number = i;
         break;
       }
     }
     if(number != -1){
-      printMouthShape(number);
+      printMouth(number, r, g, b);
     } else {
       if(debug) Serial.println("Error: mouth name does not exist");
     }
 }
 
-void SimpleExpressionsClass::printMouthShape(int number) {
+void SimpleExpressionsClass::printMouth(int number, int r, int g, int b) {
   for(uint16_t i = 0; i<7; i++) {
-    mouth.setPixelColor(i, mouth.Color(shapes[number].data[i][0], shapes[number].data[i][1], shapes[number].data[i][2]));
+    if(shapes[number].data[i]) mouth.setPixelColor(i, mouth.Color(r, g, b));
+    else mouth.setPixelColor(i, 0);
+  }
+  mouth.show();
+}
+
+void SimpleExpressionsClass::writeMouth(char mouthName[] ){
+  int number = -1;
+    for(int i = 0; i < colorFrameCount; i++){
+      if(strncmp(shapes[i].name, mouthName, 20) == 0) {
+        number = i;
+        break;
+      }
+    }
+    if(number != -1){
+      printMouth(number);
+    } else {
+      if(debug) Serial.println("Error: mouth name does not exist");
+    }
+}
+
+void SimpleExpressionsClass::printMouth(int number) {
+  for(uint16_t i = 0; i<7; i++) {
+    mouth.setPixelColor(i, mouth.Color(colorShapes[number].data[i][0], colorShapes[number].data[i][1], colorShapes[number].data[i][2]));
   }
   mouth.show();
 }
 
 
+void SimpleExpressionsClass::writeMouthGeneric(const bool mouthArray[7], int r, int g, int b) {
+  for(uint16_t i=0; i<7; i++) {
+    if(mouthArray[i]) mouth.setPixelColor(i, mouth.Color(r, g, b));
+    else mouth.setPixelColor(i, 0);
+  }
+  mouth.show();
+}
 
 void SimpleExpressionsClass::writeMouthGeneric(const int mouthArray[7][3]) {
   for(uint16_t i=0; i<7; i++) {
     mouth.setPixelColor(i, mouth.Color(mouthArray[i][0], mouthArray[i][1], mouthArray[i][2]));
   }
-  for(uint16_t i = 0; i<7; i++) {
-    Serial.println(mouth.getPixelColor(i));
-  }
-  Serial.println("#############");
   mouth.show();
 }
 

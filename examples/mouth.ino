@@ -9,18 +9,15 @@ void setup() {
 }
 
 void loop() {
-
-  SimpleExpressions.writeMouth("zeros");
-  delay(500);
-  SimpleExpressions.printMouthShape(1);
-  delay(500);
-  SimpleExpressions.writeMouth("happyFull");
-  delay(500);
-  SimpleExpressions.writeMouth("zeros");
-  delay(500);
-  SimpleExpressions.writeMouth("sadFull");
-  delay(500);
-  SimpleExpressions.writeMouth("sadSmall");
-  delay(500);
-
+  // for (int i = 0; i < 18; i++) {
+  SimpleExpressions.writeMouth("cross", 30, 0, 0);
+  //Serial.println(i);
+  delay(1000);
+  SimpleExpressions.writeMouth("hook", 0, 30, 0);
+  delay(1000);
+  SimpleExpressions.writeMouth("leftarrow", 0, 15, 30);
+  delay(1000);
+  SimpleExpressions.writeMouth("rightarrow", 0, 15, 30);
+  delay(1000);
+  //}
 }
