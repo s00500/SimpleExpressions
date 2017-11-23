@@ -3,8 +3,19 @@
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  SimpleExpressions.init(13, 14);
-  //SimpleExpressions._tone(440, 5000,1);
+  delay(2000);
+  SimpleExpressions.init(13, 17);
+
+  SimpleExpressions.clearMouth();
+
+  for (int i = 0; i < 18; i++) {
+    Serial.println(i);
+    SimpleExpressions.printMouth(i, 30, 0, 0);
+    SimpleExpressions.playSound(i);
+
+    delay(1000);
+  }
+
 
 }
 
