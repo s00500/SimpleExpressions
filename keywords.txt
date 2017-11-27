@@ -1,0 +1,46 @@
+#######################################
+# Syntax Coloring Map For ExampleLibrary
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+SimpleExpressions	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+showMouth	KEYWORD2
+printMouth	KEYWORD2
+playSound  KEYWORD2
+_tone	KEYWORD2
+
+#######################################
+# Instances (KEYWORD2)
+#######################################
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+S_CONNECTION
+S_DISCONNECTION
+S_BUTTON_PUSHED
+S_MODE1
+S_MODE2
+S_MODE3
+S_SURPRISE
+S_OHOOH
+S_OHOOH2
+S_CUDDLY
+S_SLEEPING
+S_HAPPY 		
+S_SUPER_HAPPY
+S_HAPPY_SHORT
+S_SAD
+S_CONFUSED
+S_FART1
+S_FART2
+S_FART3
