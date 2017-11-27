@@ -43,6 +43,7 @@ class SimpleExpressionsClass
   private:
     Adafruit_NeoPixel mouth;
     void clearPixels();
+    int buzzerPin;
 };
 
 extern SimpleExpressionsClass SimpleExpressions;

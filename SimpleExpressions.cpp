@@ -3,12 +3,17 @@
 
 #define ledc_channel 5
 
-void SimpleExpressionsClass::init(int mouthPin, int buzzerPin) {
-  mouth = Adafruit_NeoPixel(7, mouthPin, NEO_GRB + NEO_KHZ800);
+void SimpleExpressionsClass::init(int aMouthPin, int aBuzzerPin) {
+  mouth = Adafruit_NeoPixel(7, aMouthPin, NEO_GRB + NEO_KHZ800);
   mouth.begin();
 
-  ledcSetup(ledc_channel, 2000, 8); // channel, max frequency, resolution
-  ledcAttachPin(buzzerPin, ledc_channel);
+  buzzerPin = aBuzzerPin;
+
+  #if defined(ESP32)
+    ledcSetup(ledc_channel, 2000, 8); // channel, max frequency, resolution
+    ledcAttachPin(aBuzzerPin, ledc_channel);
+  #endif
+
 
   clearMouth();
 }
@@ -118,9 +123,15 @@ void SimpleExpressionsClass::clearPixels() { // avoid strange issues on ESP32 wi
 void SimpleExpressionsClass::_tone (float noteFrequency, long noteDuration, int silentDuration){
     if(silentDuration==0){silentDuration=1;}
 
-    ledcWriteTone(ledc_channel, noteFrequency);
-    delay(noteDuration); // milliseconds
-    ledcWrite(ledc_channel, 0); // notone
+    #if defined(ESP32)
+      ledcWriteTone(ledc_channel, noteFrequency);
+      delay(noteDuration); // milliseconds
+      ledcWrite(ledc_channel, 0); // notone
+    #else
+      tone(buzzerPin, noteFrequency, noteDuration);
+      delay(noteDuration); // milliseconds
+    #endif
+
     delay(silentDuration);
 }
 
