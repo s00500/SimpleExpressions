@@ -25,7 +25,7 @@ typedef MulticolorFrame;
 
 // TODO: calculate me
 
-const Frame shapes[] = {
+const PROGMEM Frame shapes[] = {
   {
     "zeros",
     {0, 0, 0, 0, 0, 0, 0}
@@ -104,7 +104,7 @@ const Frame shapes[] = {
 
 
 
-const MulticolorFrame colorShapes[] = {
+const PROGMEM MulticolorFrame colorShapes[] = {
   {
     "colorCircle",
     {
