@@ -1,9 +1,11 @@
 #include <SimpleExpressions.h>
 
+#define ledDataPin 13
+#define beeperPin 17
+
 void setup() {
   Serial.begin(115200);
-  delay(2000);
-  SimpleExpressions.init(13, 17);
+  SimpleExpressions.init(ledDataPin, beeperPin);
   SimpleExpressions.clearMouth();
 
   for (int i = 0; i < 18; i++) {
