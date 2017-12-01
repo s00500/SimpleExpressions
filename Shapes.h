@@ -20,7 +20,7 @@ typedef MulticolorFrame;
 //*********************************MOUTHS DEFINES************************************
 //***********************************************************************************
 
-#define frameCount 18
+#define frameCount 19
 #define colorFrameCount 1
 
 // TODO: calculate me
