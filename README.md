@@ -7,4 +7,3 @@ The sound are taken from BQs Zowie. Currently the library only supports ESP32
 ### TODO
 
 - Provide further documentation
-- Add support for normal Arduino Boards
