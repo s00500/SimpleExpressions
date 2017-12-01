@@ -24,11 +24,37 @@ The sound are taken from BQs Zowie. The Library supports all Arduino boards (tha
 
 ### Functions
 
+Just see the example how everything works together
+
+- SimpleExpressions.**init(ledPin, buzzerPin);**
+Initializes the library with the given pins
+
+- SimpleExpressions.**clearMouth();**
+Clears the mouth and sets all pixels off
+
+- SimpleExpressions.**printMouth(mouthNumber, red, green, blue);**
+Prints a mouth by its number and using the given color, useful to iterate through all of them (use **frameCount** or **colorFrameCount** to determine the maximum number)
+(use without the colorvalues for multicolor mouths)
+
+- SimpleExpressions.**writeMouth("cross", red, green, blue);**
+Does basically the same but you can select the mouth by its name (use without the colorvalues for multicolor mouths)
+
+- SimpleExpressions.**writeMouthGeneric(moutharray)**
+**Advanced:** Write a mouth straight from your code with color values fo all of the pixels
+
+- SimpleExpressions.**playSound(SOUND_NUMBER);**
+Plays a sound by its number using the constants you can find below.
+
+- SimpleExpressions.**_tone(noteFrequency, noteDuration, silentDuration);**
+Similar to the arduino tone function, but also working on ESP32 (using ledc)
+
+- SimpleExpressions.**bendTones(note1Frequency, note2Frequency, prop, noteDuration, ilentDuration);**
+Similar to the arduino tone function, but also working on ESP32 (using ledc)
 
 
 ### Available mouth shapes
 
-## single color shapes
+#### single color shapes
 
 - **zeros**
 - **happySmall**
@@ -49,7 +75,7 @@ The sound are taken from BQs Zowie. The Library supports all Arduino boards (tha
 - **lefthalf**
 - **righthalf**
 
-## multi color shapes
+#### multi color shapes
 
 - **colorCircle**
 
@@ -81,6 +107,7 @@ The sound are taken from BQs Zowie. The Library supports all Arduino boards (tha
 
 - If you have new Ideas for different shapes or multicolor shapes just write them down and create a pull request (Or if you are not familiar with git draw them and post an issue)
 - Calculate frame count from arraysize
+- Example for **writeMouthGeneric()**
 - Currently I am happy with it, any Ideas? let me know
 
 ### Buy me a coffee ☕️

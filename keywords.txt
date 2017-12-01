@@ -12,10 +12,17 @@ SimpleExpressions	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
+clearMouth KEYWORD2
 showMouth	KEYWORD2
 printMouth	KEYWORD2
+showColorMouth	KEYWORD2
+printColorMouth	KEYWORD2
+bendTones	KEYWORD2
+writeMouthGeneric KEYWORD2
+
 playSound  KEYWORD2
 _tone	KEYWORD2
+bendTones	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)
