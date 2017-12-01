@@ -22,13 +22,6 @@ void SimpleExpressionsClass::init(int aMouthPin, int aBuzzerPin) {
 //-- MOUTHS  ----------------------------------------//
 ///////////////////////////////////////////////////////////////////
 
-/*
-void SimpleExpressionsClass::putAnimationMouth(int aniMouth, int index){
-
-}
-*/
-
-
 void SimpleExpressionsClass::writeMouth(char mouthName[], int r, int g, int b) {
   int number = -1;
     for(int i = 0; i < frameCount; i++){
@@ -266,6 +259,14 @@ void SimpleExpressionsClass::playSound(int soundName){
     case S_FART3:
       bendTones(1600, 4000, 1.02, 2, 20);
       bendTones(4000, 3000, 1.02, 2, 20);
+    break;
+
+    case PIRATES:
+    // This is funny but very experimental and probably take long haha =P
+      for (int i = 0; i < 203; i++) {       //203 is the total number of music notes in the song
+        int wait = duration[i] * songspeed;
+        _tone( notes[i], wait, 0);        //tone(pin,frequency,duration)
+      }
     break;
 
   }

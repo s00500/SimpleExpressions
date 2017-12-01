@@ -14,9 +14,10 @@
 class SimpleExpressionsClass
 {
   public:
-
+    // General
     void init(int mouthPin, int buzzerPin);
 
+    // Mouths
     void printMouth(int number, int r, int g, int b);
     void writeMouth(char mouthName[], int r, int g, int b);
 
@@ -28,16 +29,10 @@ class SimpleExpressionsClass
     void writeMouthGeneric(const int mouthArray[7][3]);
     void writeMouthGeneric(const bool mouthArray[7], int r, int g, int b);
 
-
-    //void putAnimationMouth(int anim, int index);
-
-    //-- Sounds
+    // Sounds
     void _tone (float noteFrequency, long noteDuration, int silentDuration);
     void bendTones (float initFrequency, float finalFrequency, float prop, long noteDuration, int silentDuration);
     void playSound(int soundName);
-
-    //-- Gestures
-    //void playGesture(int gesture);
 
 
   private:

@@ -18,7 +18,7 @@ Blockly.Blocks['show_mouth'] = {
 
 Blockly.Arduino['show_mouth'] = function(block) {
   var input_color = Blockly.Arduino.valueToCode(block, 'Color', Blockly.Arduino.ORDER_ATOMIC);
-  var code='SimpleExpressions.showMouth("+'mouth_name'+", '+color+')';
+  var code='SimpleExpressions.showMouth("'+'mouth_name'+'", ' + color + ')' ;
   code+= '\n';
   return code;
 };
