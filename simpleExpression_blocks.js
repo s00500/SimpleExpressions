@@ -1,8 +1,3 @@
-Facilino.LANG_COLOUR_SCREEN_LEDSTRIP = '#8EAC32';
-Facilino.locales.defaultLanguage["LANG_SUBCATERGORY_WS2812"]="LED Strip";
-Facilino.locales.defaultLanguage["LANG_SIMPLEEXPRESSIONS_PIN"]="PIN";
-Facilino.locales.defaultLanguage["LANG_SIMPLEEXPRESSIONS_SHOWMOUTH_TOOLTIP"]="Draw an expression on the WS2812 led strip (ring-7)";
-
 Blockly.Blocks['show_mouth'] = {
 	category: Facilino.locales.getKey('LANG_CATEGORY_SCREEN'),
 	subcategory: Facilino.locales.getKey('LANG_SUBCATERGORY_WS2812'),
@@ -37,24 +32,59 @@ code+= '\n';
 return code;
 };
 
-Blockly.Blocks['play_sound'] = {
-  category: 'SimpleExpressions',
-  colour: '#fbb117',
-  helpUrl: Facilino.getHelpUrl('play_sound'),
-  tags: [],
-  examples: [],
-  init: function() {
-    this.appendDummyInput()
-        .appendField("play Sound");
-    this.setColour("#fbb117");
-    this.setTooltip("");
-  }
-};
-
-
-Blockly.Arduino['play_sound'] = function(block) {
-  var input_color = Blockly.Arduino.valueToCode(block, 'Color', Blockly.Arduino.ORDER_ATOMIC);
-  var code='';
-  code+= '\n';
-  return code;
-};
+		Blockly.Arduino.dyor_piezo_buzzer_predef_sounds = function() {
+			var dropdown_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC) || '';
+			var code= '';
+			Blockly.Arduino.definitions_['define_simpleexpressions_h'] = '#include <SimpleExpressions.h>';
+			Blockly.Arduino.setups_['setup_simpleexpressions_buzzer'] = 'SimpleExpressions.initBuzzer('+dropdown_pin+');\n';
+			code='SimpleExpressions.playSound('+this.getFieldValue('OPTION')+');\n';
+            return code;
+        };
+		
+		Blockly.Blocks.dyor_piezo_buzzer_predef_sounds = {
+            category: Facilino.locales.getKey('LANG_CATEGORY_SOUND'),
+			subcategory: Facilino.locales.getKey('LANG_SUBCATEGORY_BUZZER'),
+            tags: ['buzzer','sound'],
+            helpUrl: Facilino.getHelpUrl('dyor_piezo_buzzer_predef_sounds'),
+			examples: [''],
+			category_colour: Facilino.LANG_COLOUR_SOUND,
+			colour: Facilino.LANG_COLOUR_SOUND_BUZZER,
+            //dyor_piezo_buzzer initialization
+            init: function() {
+                this.setColour(Facilino.LANG_COLOUR_SOUND_BUZZER);
+				this.appendDummyInput('')
+                    .appendField(Facilino.locales.getKey('LANG_PIEZO_BUZZER'))
+                    .appendField(new Blockly.FieldImage('img/blocks/buzzer.svg', 52*options.zoom, 35*options.zoom));
+                this.appendValueInput('PIN')
+                    .appendField(Facilino.locales.getKey('LANG_PIEZO_BUZZER_PIN')).appendField(new Blockly.FieldImage("img/blocks/pwm_signal.svg",24*options.zoom,24*options.zoom))
+                    .setCheck(Number)
+                    .setAlign(Blockly.ALIGN_RIGHT);
+                this.appendDummyInput('').appendField(new Blockly.FieldImage('img/blocks/speaker.svg', 24*options.zoom, 24*options.zoom))
+                    .appendField(new Blockly.FieldDropdown([
+                        ['CONNECTION', '0'],
+						['DISCONNECTION', '1'],
+                        ['BUTTON PUSHED', '2'],
+						['MODE 1', '3'],
+                        ['MODE 2', '4'],
+						['MODE 3', '5'],
+                        ['SURPRISE', '6'],
+						['OHOOH', '7'],
+						['OHOOH2', '8'],
+						['CUDDLY', '9'],
+						['SLEEPING','10'],
+						['HAPPY','11'],
+						['SUPER_HAPPY','12'],
+						['HAPPY_SHORT','13'],
+						['SAD','14'],
+						['CONFUSED','15'],
+						['FART1','16'],
+						['FART2','17'],
+						['FART3','18'],
+						['PIRATES','19']
+                    ]), 'OPTION').setAlign(Blockly.ALIGN_RIGHT);
+				this.setInputsInline(false);
+                this.setPreviousStatement(true,'code');
+                this.setNextStatement(true,'code');
+                this.setTooltip(Facilino.locales.getKey('LANG_PIEZO_BUZZER_PREDEF_SOUNDS_TOOLTIP'));
+            }
+        };
