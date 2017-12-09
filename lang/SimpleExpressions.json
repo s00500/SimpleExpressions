@@ -1,0 +1,16 @@
+{
+	"langs": 
+	{
+		"en-GB": 
+		{
+			"keys": 
+			{
+				"LANG_CATEGORY_SOUND": "User Sound",
+				"LANG_SUBCATEGORY_BUZZER": "Buzzer",
+				"LANG_PIEZO_BUZZER": "Buzzer",
+				"LANG_PIEZO_BUZZER_PIN": "PIN",
+				"LANG_PIEZO_BUZZER_PREDEF_SOUNDS_TOOLTIP": "Plays some basic sounds based on SimpleExpressions library"
+			}
+		}
+	}
+}

@@ -1,3 +1,6 @@
+Facilino.LANG_COLOUR_SCREEN = '#ACCE42';
+Facilino.LANG_COLOUR_SCREEN_LEDSTRIP = '#8EAC32';
+
 Blockly.Blocks['show_mouth'] = {
 	category: Facilino.locales.getKey('LANG_CATEGORY_SCREEN'),
 	subcategory: Facilino.locales.getKey('LANG_SUBCATERGORY_WS2812'),
