@@ -16,6 +16,8 @@ class SimpleExpressionsClass
   public:
     // General
     void init(int mouthPin, int buzzerPin);
+	void initMouth(int mouthPin);
+	void initBuzzer(int buzzerPin);
 
     // Mouths
     void printMouth(int number, int r, int g, int b);

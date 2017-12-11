@@ -18,6 +18,21 @@ void SimpleExpressionsClass::init(int aMouthPin, int aBuzzerPin) {
   clearMouth();
 }
 
+void SimpleExpressionsClass::init(int aMouthPin, int aBuzzerPin) {
+  mouth = Adafruit_NeoPixel(7, aMouthPin, NEO_GRB + NEO_KHZ800);
+  mouth.begin();
+  clearMouth();
+}
+
+void SimpleExpressionsClass::initBuzzer(int aBuzzerPin) {
+  buzzerPin = aBuzzerPin;
+
+  #if defined(ESP32)
+    ledcSetup(ledc_channel, 2000, 8); // channel, max frequency, resolution
+    ledcAttachPin(aBuzzerPin, ledc_channel);
+  #endif
+}
+
 ///////////////////////////////////////////////////////////////////
 //-- MOUTHS  ----------------------------------------//
 ///////////////////////////////////////////////////////////////////
