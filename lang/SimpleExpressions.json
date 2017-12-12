@@ -1,11 +1,11 @@
 {
-	"langs": 
+	"langs":
 	{
-		"en-GB": 
+		"en-GB":
 		{
-			"keys": 
+			"keys":
 			{
-				"LANG_CATEGORY_SOUND": "User Sound",
+				"LANG_CATEGORY_SOUND": "Sound",
 				"LANG_SUBCATEGORY_BUZZER": "Buzzer",
 				"LANG_PIEZO_BUZZER": "Buzzer",
 				"LANG_PIEZO_BUZZER_PIN": "PIN",
