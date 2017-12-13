@@ -29,7 +29,7 @@ void SimpleExpressionsClass::initBuzzer(int aBuzzerPin) {
 //-- MOUTHS  ----------------------------------------//
 ///////////////////////////////////////////////////////////////////
 
-void SimpleExpressionsClass::writeMouth(char mouthName[], int r, int g, int b) {
+void SimpleExpressionsClass::writeMouth(const char mouthName[], int r, int g, int b) {
   int number = -1;
     for(int i = 0; i < frameCount; i++){
       if(strncmp(shapes[i].name, mouthName, 20) == 0) {
@@ -54,7 +54,7 @@ void SimpleExpressionsClass::printMouth(int number, int r, int g, int b) {
   clearPixels();
 }
 
-void SimpleExpressionsClass::writeMouth(char mouthName[] ) {
+void SimpleExpressionsClass::writeMouth(const char mouthName[] ) {
   int number = -1;
     for(int i = 0; i < colorFrameCount; i++){
       if(strncmp(shapes[i].name, mouthName, 20) == 0) {
