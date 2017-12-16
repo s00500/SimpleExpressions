@@ -25,7 +25,7 @@ Blockly.Blocks['show_mouth'] = {
 	tags: [],
 	examples: [],
 	init: function() {
-		this.appendDummyInput('').appendField("WS2812 7-Ring").appendField(new Blockly.FieldImage('img/blocks/led_strip.svg', 40*options.zoom, 40*options.zoom));
+		this.appendDummyInput('').appendField(Facilino.locales.getKey('LANG_SIMPLEEXPRESSIONS_SHOW_MOUTH')).appendField(new Blockly.FieldImage('img/blocks/round_led_strip.svg', 40*options.zoom, 40*options.zoom));
 		this.appendValueInput('PIN').appendField(Facilino.locales.getKey('LANG_SIMPLEEXPRESSIONS_PIN')).setAlign(Blockly.ALIGN_RIGHT).setCheck(Number);
 		this.appendDummyInput('').appendField('Expression').appendField(new Blockly.FieldDropdown([['Zeros','zeros'],['Happy Small','happySmall'],['Happy Full','happyFull'],['Sad Small','sadSmall'],['Sad Full','sadFull'],['Neutral','neutral'],['Circle','circle'],['Center','center'],['Hook','hook'],['Upsidedown Hook','upsidedownhook'],['Kooh','kooh'],['Upsidedown Kooh','upsidedownkooh'],['Cross','cross'],['Rect','rect'],['Left Arrow','leftarrow'],['Right Arrow','rightarrow'],['Left Half','lefthalf'],['Right Half','righthalf']]),'EXPRESSION').setAlign(Blockly.ALIGN_RIGHT);
 		var colour = new Blockly.FieldColour('#000000');

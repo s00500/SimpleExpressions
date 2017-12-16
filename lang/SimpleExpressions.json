@@ -9,6 +9,7 @@
 				"LANG_SUBCATEGORY_BUZZER": "Buzzer",
 				"LANG_PIEZO_BUZZER": "Buzzer",
 				"LANG_PIEZO_BUZZER_PIN": "PIN",
+				"LANG_SIMPLEEXPRESSIONS_SHOW_MOUTH": "7-RGB LEDs",
 				"LANG_PIEZO_BUZZER_PREDEF_SOUNDS_TOOLTIP": "Plays some basic sounds based on SimpleExpressions library"
 			}
 		}
