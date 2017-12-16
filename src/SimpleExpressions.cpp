@@ -4,21 +4,13 @@
 #define ledc_channel 5
 
 void SimpleExpressionsClass::init(int aMouthPin, int aBuzzerPin) {
-  mouth = Adafruit_NeoPixel(7, aMouthPin, NEO_GRB + NEO_KHZ800);
-  mouth.begin();
-
-  buzzerPin = aBuzzerPin;
-
-  #if defined(ESP32)
-    ledcSetup(ledc_channel, 2000, 8); // channel, max frequency, resolution
-    ledcAttachPin(aBuzzerPin, ledc_channel);
-  #endif
-
-
+  initMouth(aMouthPin);
+  initBuzzer(aBuzzerPin);
   clearMouth();
 }
 
-void SimpleExpressionsClass::init(int aMouthPin, int aBuzzerPin) {
+
+void SimpleExpressionsClass::initMouth(int aMouthPin) {
   mouth = Adafruit_NeoPixel(7, aMouthPin, NEO_GRB + NEO_KHZ800);
   mouth.begin();
   clearMouth();
@@ -37,7 +29,7 @@ void SimpleExpressionsClass::initBuzzer(int aBuzzerPin) {
 //-- MOUTHS  ----------------------------------------//
 ///////////////////////////////////////////////////////////////////
 
-void SimpleExpressionsClass::writeMouth(char mouthName[], int r, int g, int b) {
+void SimpleExpressionsClass::writeMouth(const char mouthName[], int r, int g, int b) {
   int number = -1;
     for(int i = 0; i < frameCount; i++){
       if(strncmp(shapes[i].name, mouthName, 20) == 0) {
@@ -62,7 +54,7 @@ void SimpleExpressionsClass::printMouth(int number, int r, int g, int b) {
   clearPixels();
 }
 
-void SimpleExpressionsClass::writeMouth(char mouthName[] ) {
+void SimpleExpressionsClass::writeMouth(const char mouthName[] ) {
   int number = -1;
     for(int i = 0; i < colorFrameCount; i++){
       if(strncmp(shapes[i].name, mouthName, 20) == 0) {

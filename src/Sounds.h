@@ -134,7 +134,7 @@
 
 const int songspeed = 1;
 
-const PROGMEM int notes[] = {       //Note of the song, 0 is a rest/pulse
+const PROGMEM double notes[] = {       //Note of the song, 0 is a rest/pulse
   NOTE_E4, NOTE_G4, NOTE_A4, NOTE_A4, 0,
   NOTE_A4, NOTE_B4, NOTE_C5, NOTE_C5, 0,
   NOTE_C5, NOTE_D5, NOTE_B4, NOTE_B4, 0,
