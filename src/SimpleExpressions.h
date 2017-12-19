@@ -21,10 +21,10 @@ class SimpleExpressionsClass
 
     // Mouths
     void printMouth(int number, int r, int g, int b);
-    void writeMouth(char mouthName[], int r, int g, int b);
+    void writeMouth(const char mouthName[], int r, int g, int b);
 
     void printMouth(int number);
-    void writeMouth(char mouthName[]);
+    void writeMouth(const char mouthName[]);
 
     void clearMouth();
 
